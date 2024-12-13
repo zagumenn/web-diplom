@@ -27,6 +27,36 @@
             {% endfor %}
         </tbody>
     </table>
+    <table>
+    <h2>Список заказов</h2>
+      <thead>
+            <tr>
+                <th>ID</th>
+                <th>Дата заказа</th>
+                <th>user_id</th>
+                <th>driver_id</th>
+                <th>Начальное место</th>
+                <th>Конечное место</th>
+                <th>Цена</th>
+                <th>Статус</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr>
+                <td>{{ order.id }}</td>
+                <td>{{ order.data }}</td>
+                <td>{{ order.user_id.fullname }}</td>
+                <td>{{ order.driver_id.fullname }}</td>
+                <td>{{ order.starting_place }}</td>
+                <td>{{ order.end_place }}</td>
+                <td>{{ order.price }}</td>
+                <td>{{ order.status_id.status }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+</table>
+
 </body>
 </html>
 

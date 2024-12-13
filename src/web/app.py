@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, flash, url_for
 from flask_login import LoginManager, current_user, login_user, login_required, logout_user
 
+from src.Controllers.OrderController import OrderController
 from src.Controllers.RoleController import RoleController
 from src.Controllers.UserController import UserController
 from src.Models.User import Users
@@ -52,7 +53,8 @@ def roles():
 @login_required  # Убедитесь, что только администраторы или авторизованные пользователи могут видеть эту страницу
 def admin():
     users = UserController.get_non_admin_users()
-    return render_template('admin.html', users=users)
+    orders = OrderController.get()
+    return render_template('admin.html', users=users, orders = orders)
 
 @app.route('/user')
 @login_required
