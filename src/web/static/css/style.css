@@ -67,6 +67,18 @@
         --bs-btn-active-border-color: #5a23c8;
       }
 
+      .btn-primary{
+      background: orange;
+      color: black;
+      border: black;
+      }
+
+      .btn-primary:hover{
+      background: darkorange;
+      color: black;
+      border: black;
+      }
+
       .bd-mode-toggle {
         z-index: 1500;
       }
