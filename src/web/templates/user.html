@@ -1,6 +1,25 @@
 <title>Панель пользователя </title>
 <h1>Панель пользователя - {{current_user.fullname}}</h1>
-
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Полное имя</th>
+                <th>Пол</th>
+                <th>Телефон</th>
+                <th>Логин</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ current_user.id}}</td>
+                <td>{{ current_user.fullname}}</td>
+                <td>{{ current_user.gender_id.gender}}</td>
+                <td>{{ current_user.phone}}</td>
+                <td>{{ current_user.login}}</td>
+            </tr>
+        </tbody>
+    </table>
 <a class="nav-link d-flex align-items-center gap-2" href="orderCreate/">
     Заказ
 </a>

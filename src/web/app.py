@@ -4,6 +4,7 @@ from flask_login import LoginManager, current_user, login_user, login_required, 
 from src.Controllers.OrderController import OrderController
 from src.Controllers.RoleController import RoleController
 from src.Controllers.UserController import UserController
+from src.Controllers.CarController import CarController
 from src.Models.User import Users
 
 
@@ -54,7 +55,8 @@ def roles():
 def admin():
     users = UserController.get_non_admin_users()
     orders = OrderController.get()
-    return render_template('admin.html', users=users, orders = orders)
+    cars = CarController.get()
+    return render_template('admin.html', users=users, orders = orders, cars = cars)
 
 @app.route('/user')
 @login_required

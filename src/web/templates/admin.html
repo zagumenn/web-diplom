@@ -15,7 +15,10 @@
             <tr>
                 <th>ID</th>
                 <th>Полное имя</th>
+                <th>Пол</th>
+                <th>Номер</th>
                 <th>Логин</th>
+                <th>Роль</th>
             </tr>
         </thead>
         <tbody>
@@ -23,10 +26,14 @@
             <tr>
                 <td>{{ user.id }}</td>
                 <td>{{ user.fullname }}</td>
+                <td>{{ user.gender_id.gender }}</td>
+                <td>{{ user.phone }}</td>
                 <td>{{ user.login }}</td>
+                <td>{{ user.role_id.name }}</td>
             </tr>
             {% endfor %}
         </tbody>
+        <button class="btn btn-primary w-100 py-2" type="submit">Изменить</button>
     </table>
     <table>
     <h2>Список заказов</h2>
@@ -56,7 +63,32 @@
             </tr>
             {% endfor %}
         </tbody>
-</table>
+        <button class="btn btn-primary w-100 py-2" type="submit">Изменить</button>
+    </table>
+    <table>
+    <h2>Список машин</h2>
+      <thead>
+            <tr>
+                <th>ID</th>
+                <th>Бренд</th>
+                <th>Модель</th>
+                <th>Цвет</th>
+                <th>Гос. номер</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for car in cars %}
+            <tr>
+                <td>{{ car.id}}</td>
+                <td>{{ car.brand}}</td>
+                <td>{{ car.model}}</td>
+                <td>{{ car.color}}</td>
+                <td>{{ car.state_number}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <button class="btn btn-primary w-100 py-2" type="submit">Изменить</button>
+    </table>
 
 </body>
 </html>
