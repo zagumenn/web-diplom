@@ -52,4 +52,4 @@ class UserController:
 if __name__ == "__main__":
     #print(UserController.registration('Oleg', 'olg19', 'olg12345', 1))
     print(UserController.auth('ivan89', '111111111'))
-    print(UserController.show_login('olg19').role_id)
+    #print(UserController.show_login('olg19').role_id)

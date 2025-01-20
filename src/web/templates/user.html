@@ -1,5 +1,73 @@
-<title>Панель пользователя </title>
-<h1>Панель пользователя - {{current_user.fullname}}</h1>
+<!--<title>Панель пользователя </title>-->
+<!--<h1>Панель пользователя - {{current_user.fullname}}</h1>-->
+<!--    <table>-->
+<!--        <thead>-->
+<!--            <tr>-->
+<!--                <th>ID</th>-->
+<!--                <th>Полное имя</th>-->
+<!--                <th>Пол</th>-->
+<!--                <th>Телефон</th>-->
+<!--                <th>Логин</th>-->
+<!--            </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--            <tr>-->
+<!--                <td>{{ current_user.id}}</td>-->
+<!--                <td>{{ current_user.fullname}}</td>-->
+<!--                <td>{{ current_user.gender_id.gender}}</td>-->
+<!--                <td>{{ current_user.phone}}</td>-->
+<!--                <td>{{ current_user.login}}</td>-->
+<!--            </tr>-->
+<!--        </tbody>-->
+<!--    </table>-->
+<!--<a class="nav-link d-flex align-items-center gap-2" href="orderCreate/">-->
+<!--    Заказ-->
+<!--</a>-->
+
+<!--<a class="nav-link d-flex align-items-center gap-2" href="/">-->
+<!--    Выход-->
+<!--</a>-->
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Панель пользователя</title>
+    <style>
+        body {
+            background-color: black; /* Черный фон */
+            color: white; /* Белый текст */
+            font-family: Arial, sans-serif; /* Шрифт для текста */
+        }
+        table {
+            width: 70%;
+            border-collapse: collapse; /* Убираем пробелы между ячейками */
+        }
+        th, td {
+            border: 1px solid white; /* Белая граница для ячеек */
+            padding: 8px;
+            text-align: left; /* Выравнивание текста в ячейках */
+        }
+        th {
+            background-color: #333; /* Темно-серый фон для заголовков таблицы */
+        }
+        a {
+            display: inline-block; /* Делаем ссылки блочными элементами */
+            background-color: orange; /* Цвет фона кнопок */
+            color: black; /* Цвет текста на кнопках */
+            padding: 10px 15px; /* Отступы внутри кнопок */
+            text-decoration: none; /* Убираем подчеркивание */
+            border-radius: 5px; /* Закругляем углы кнопок */
+            margin: 5px; /* Отступы между кнопками */
+        }
+        a:hover {
+            background-color: orange; /* Цвет фона кнопок при наведении */
+        }
+    </style>
+</head>
+<body>
+    <h1>Панель пользователя - {{current_user.fullname}}</h1>
     <table>
         <thead>
             <tr>
@@ -20,10 +88,8 @@
             </tr>
         </tbody>
     </table>
-<a class="nav-link d-flex align-items-center gap-2" href="orderCreate/">
-    Заказ
-</a>
+    <a href="orderCreate/">Заказ</a>
+    <a href="/">Выход</a>
+</body>
+</html>
 
-<a class="nav-link d-flex align-items-center gap-2" href="/">
-    Выход
-</a>
