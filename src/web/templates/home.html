@@ -1,13 +1,52 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="ru">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Домашняя страница</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <h1>Добро пожаловать на сайт!</h1>-->
+<!--    <a href="{{ url_for('registration') }}">Регистрация</a>-->
+<!--    <a href="{{ url_for('login') }}">Авторизация</a>-->
+<!--</body>-->
+<!--</html>-->
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Домашняя страница</title>
+    <style>
+        body {
+            background-color: black; /* Черный фон */
+            color: white; /* Белый текст */
+            font-family: Arial, sans-serif; /* Шрифт */
+            text-align: center; /* Центрирование текста */
+            padding: 20px; /* Отступы */
+        }
+        .button {
+            display: inline-block; /* Для кнопок */
+            background-color: orange; /* Цвет фона кнопок */
+            color: black; /* Цвет текста на кнопках */
+            padding: 10px 20px; /* Отступы внутри кнопок */
+            text-decoration: none; /* Убираем подчеркивание */
+            border-radius: 5px; /* Закругленные углы */
+            margin: 10px; /* Отступы между кнопками */
+            transition: background-color 0.3s; /* Плавный переход цвета фона */
+        }
+        .button:hover {
+            background-color: orange; /* Цвет фона кнопок при наведении */
+        }
+    </style>
 </head>
 <body>
+    <img src="src/Img/Logo.jpg" alt="Лого сайта">
     <h1>Добро пожаловать на сайт!</h1>
-    <a href="{{ url_for('registration') }}">Регистрация</a>
-    <a href="{{ url_for('login') }}">Авторизация</a>
+    <a class="button" href="{{ url_for('registration') }}">Регистрация</a>
+    <a class="button" href="{{ url_for('login') }}">Авторизация</a>
 </body>
 </html>
+
+
