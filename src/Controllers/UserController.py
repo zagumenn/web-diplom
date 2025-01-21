@@ -8,14 +8,14 @@ class UserController:
         return Users.select()
 
     @classmethod
-    def registration(cls, fullname, login, password, role_id):
+    def registration(cls, fullname, login, password, gender_id, phone):
         # Проверка логина
         if Users.select().where(Users.login == login):
             return "Пользователь с таким логином существует, попробуйте снова"
 
         # Хеширование пароля
         hash_password = hashpw(password.encode('utf-8'), gensalt()).decode('utf-8')
-        Users.create(fullname=fullname, login=login, password=hash_password, role_id=role_id)
+        Users.create(fullname=fullname, gender_id = gender_id, login=login, phone=phone, password=hash_password, role_id=2)
         return f"Пользователь {login} добавлен в систему"
 
     @classmethod

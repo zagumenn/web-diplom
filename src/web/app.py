@@ -74,25 +74,67 @@ def logout():
     return redirect('/')  # Перенаправляем на главную страницу
 
 
+# @app.route('/registration/', methods=['GET', 'POST'])
+# def registration():
+#     if request.method == 'POST':
+#         fullname = request.form['fullname']
+#         gender_id = request.form['gender']
+#         login = request.form['login']
+#         phone = request.form['phone']
+#         password = request.form['password']
+#
+#         role_id = 2  # Например, 2 - стандартная роль пользователя
+#
+#         # Попытка зарегистрировать пользователя
+#         result = UserController.registration(fullname, gender_id, phone, login, password)
+#
+#         if isinstance(result, str):  # Если это строка, значит, это сообщение об ошибке
+#             flash(result)  # Отображаем ошибку
+#             return redirect(url_for('registration'))
+#         else:
+#             flash("Регистрация прошла успешно!")
+#             return redirect(url_for('home'))
+#
+#     return render_template('registration.html')
+
 @app.route('/registration/', methods=['GET', 'POST'])
 def registration():
     if request.method == 'POST':
         fullname = request.form['fullname']
+        gender = request.form['gender']  # Получаем одно значение
+
+        # Проверяем, какой пол выбран
+        if gender == 'male':
+            gender_id = 'Мужской'
+        elif gender == 'female':
+            gender_id = 'Женский'
+        else:
+            # Если ни один не выбран, можно обработать ошибку
+            flash('Пожалуйста, выберите пол', 'error')
+            return redirect('/registration/')
+
         login = request.form['login']
+        phone = f"+7{request.form['phone1']}{request.form['phone2']}{request.form['phone3']}"
         password = request.form['password']
+
         role_id = 2  # Например, 2 - стандартная роль пользователя
 
         # Попытка зарегистрировать пользователя
-        result = UserController.registration(fullname, login, password, role_id)
+        result = UserController.registration(fullname, gender_id, phone, login, password)
 
-        if isinstance(result, str):  # Если это строка, значит, это сообщение об ошибке
-            flash(result)  # Отображаем ошибку
-            return redirect(url_for('registration'))
-        else:
-            flash("Регистрация прошла успешно!")
-            return redirect(url_for('home'))
+        # Обработка успешной регистрации (например, редирект на главную страницу)
+        if result:
+            flash('Регистрация прошла успешно!', 'success')
+            return redirect('/')
 
-    return render_template('registration.html')
+        # Обработка ошибок
+        flash('Ошибка регистрации', 'error')
+        return redirect('/registration/')
+
+    # Если метод запроса GET, возвращаем страницу регистрации
+    return render_template('registration.html')  # Убедитесь, что у вас есть шаблон registration.html
+
+
 
 @app.route('/orderCreate/')
 def orderCreate():

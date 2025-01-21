@@ -1,42 +1,106 @@
+
+
 {% extends 'base.html' %}
 {% block content %}
-<body class="d-flex align-items-center py-4 bg-body-tertiary">
+<head>
+    <title>Регистрация</title>
+    <style>
+        body {
+            background-color: black; /* Черный фон */
+            color: white; /* Белый текст */
+        }
+        .form-control {
+            background-color: #333; /* Темный фон для полей ввода */
+            color: white; /* Белый текст для полей ввода */
+        }
+        .form-control::placeholder {
+            color: #aaa; /* Серый цвет для плейсхолдера */
+        }
+        .btn-primary {
+            background-color: orange; /* Цвет кнопки */
+            border: none; /* Убираем рамку */
+        }
+        .btn-primary:hover {
+            background-color: orange; /* Цвет кнопки при наведении */
+        }
+        .text-body-secondary {
+            color: #aaa; /* Серый текст для второго уровня */
+        }
+
+        .text {
+            color: white;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        .button {
+            border-radius: 5px;
+            background-color: orange;
+            color: black;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            margin: 10px 0;
+            width: 25%;
+        }
+
+        .form-check {
+            margin: 10px 0px;
+        }
+
+        .form-floating{
+            margin: 10px 0px;
+        }
+
+    </style>
+</head>
+<body class="d-flex align-items-center py-4">
     <main class="form-signin w-100 m-auto">
-          <form action="/registration/" method="POST">
-              <title>Регистрация</title>
-              <h1 class="h3 mb-3 fw-normal">Регистрация</h1>
+        <form action="/registration/" method="POST">
+            <h1 class="h3 mb-3 fw-normal">Регистрация</h1>
 
-                <div class="form-floating">
-                  <input type="text" name = "fullname" class="form-control" id="floatingName" placeholder="Password" required>
-                  <label for="floatingPassword">ФИО</label>
+            <div class="form-floating">
+                <input type="text" name="fullname" class="form-control" id="floatingName" placeholder="ФИО" required>
+                <label for="floatingName">ФИО</label>
+            </div>
+
+            <label class="">Пол:</label>
+            <input type="radio" name="gender" value="male" required> Мужской
+            <input type="radio" name="gender" value="female" required> Женский
+
+            <div class="form-floating">
+                <div style="display: flex; align-items: center;">
+                    <span>+7</span>
+                    <input type="text" name="phone1" class="form-control" id="phonePrefix" maxlength="3" required style="width: 50px; margin-left: 5px;">
+                    <input type="text" name="phone2" class="form-control" maxlength="3" required style="width: 50px; margin-left: 5px;">
+                    <input type="text" name="phone3" class="form-control" maxlength="3" required style="width: 50px; margin-left: 5px;">
                 </div>
-                <div class="form-floating">
-                  <input type="text" name = "login" class="form-control" id="floatingInput" placeholder="User" required>
-                  <label for="floatingInput">Логин</label>
-                </div>
-                <div class="form-floating">
-                  <input type="password" name = "password" class="form-control" id="floatingPassword" placeholder="Password" required>
-                  <label for="floatingPassword">Пароль</label>
-                </div>
+            </div>
 
-                <button class="btn btn-primary w-100 py-2" type="submit">Зарегистрироваться</button>
-                <a class="nav-link d-flex align-items-center gap-2" href="/">
-                Выход
-                </a>
-                <p class="mt-5 mb-3 text-body-secondary">&copy; Загуменнов Станислав 2024</p>
+            <div class="form-floating">
+                <input type="text" name="login" class="form-control" id="floatingLogin" placeholder="Логин" required>
+                <label for="floatingLogin">Логин</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Пароль" required>
+                <label for="floatingPassword">Пароль</label>
+            </div>
 
+            <button class="btn btn-primary w-100 py-2" type="submit">Зарегистрироваться</button>
+            <button class="button" onclick="window.location.href='/'">Выход</button>
+            <p class="text">&copy; Загуменнов Станислав 2024</p>
 
-                {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            <ul>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-            </ul>
-        {% endif %}
-    {% endwith %}
-
-          </form>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul>
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+        </form>
     </main>
 </body>
 {% endblock %}
+
