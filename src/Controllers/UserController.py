@@ -33,6 +33,10 @@ class UserController:
     def show(cls, id):
         return Users.get_or_none(id)
 
+    @classmethod
+    def update(cls, id, new_name):
+        Users.update({Users.fullname: new_name}).where(Users.id == id).execute()
+
     @ classmethod
     def delete(cls, id):
         Users.delete_by_id(id)
@@ -53,3 +57,4 @@ if __name__ == "__main__":
     #print(UserController.registration('Oleg', 'olg19', 'olg12345', 1))
     print(UserController.auth('ivan89', '111111111'))
     #print(UserController.show_login('olg19').role_id)
+
