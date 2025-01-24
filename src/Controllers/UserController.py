@@ -1,5 +1,6 @@
 from src.Models.User import *
 from bcrypt import hashpw, gensalt, checkpw
+from werkzeug.security import generate_password_hash
 
 
 class UserController:
@@ -28,6 +29,17 @@ class UserController:
                 return True
 
         return False
+
+    @staticmethod
+    def update_password(user_id, new_password):
+        # Здесь реализуйте логику для обновления пароля в базе данных
+        user = Users.get_or_none(user_id)
+        if user:
+            user.password = new_password  # Не забудьте захешировать пароль перед сохранением
+            user.save()
+
+        user.password = generate_password_hash(new_password)
+
 
     @classmethod
     def show(cls, id):

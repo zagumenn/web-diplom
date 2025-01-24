@@ -97,6 +97,25 @@ def logout():
 #
 #     return render_template('registration.html')
 
+@app.route('/changePassword', methods=['GET', 'POST'])
+@login_required
+def change_password():
+    if request.method == 'POST':
+        new_password = request.form.get('new_password')
+        repeat_password = request.form.get('repeat_password')
+
+        if new_password != repeat_password:
+            flash('Пароли не совпадают', 'error')
+            return redirect('/changePassword')
+
+        # Здесь вы можете добавить метод для обновления пароля в базе данных
+        UserController.update_password(current_user.id, new_password)
+        flash('Пароль успешно изменён', 'success')
+        return redirect('/login')  # Перенаправляем на страницу авторизации
+
+    return render_template('changePassword.html')
+
+
 @app.route('/registration/', methods=['GET', 'POST'])
 def registration():
     if request.method == 'POST':
